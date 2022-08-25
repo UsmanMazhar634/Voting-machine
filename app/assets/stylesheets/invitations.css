@@ -1,0 +1,14 @@
+.invitation-setter{
+  width: 70%;
+  background-color:green;
+  border-radius: 10px;
+  margin-right: 15%;
+  margin-left: 15%;
+  padding: 15%;
+}
+
+#invitation-fields{
+  position: relative;
+  background-color: blue;
+  box-sizing: 30px;
+}
