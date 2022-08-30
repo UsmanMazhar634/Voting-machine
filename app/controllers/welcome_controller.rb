@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Class for welcome Screen
 class WelcomeController < ApplicationController
   def welcome_page
