@@ -5,4 +5,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def display_voters
+    @candidate = User.find(params[:id])
+    @users = User.all
+  end
 end

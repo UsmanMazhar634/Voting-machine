@@ -7,11 +7,7 @@ Rails.application.routes.draw do
   root 'welcome#welcome_page'
   get 'welcome_page', to: 'welcome#welcome_page'
   get 'dashboard_page', to: 'welcome#dashboard_page'
-  resources :users do
-    member do
-
-    end
-  end
+  resources :users
   get 'users/:id/become_candidate', to: 'candidate_requests#become_candidate', as: :become_candidate
 
   get 'become_candidate', to: 'candidate_requests#index', as: 'candidate_requests'
@@ -19,4 +15,10 @@ Rails.application.routes.draw do
   get 'become_candidate/:id', to: 'candidate_requests#show', as: 'candidate_request'
   post 'become_candidate', to: 'candidate_requests#create'
 
+  post 'approve_request/:id', to: 'candidate_requests#approve', as: 'approve_request'
+  get 'users/:id/display_voters', to: 'users#display_voters', as: 'display_voters'
+
+  # resources :polls do
+  #   resources :votes
+  # end
 end

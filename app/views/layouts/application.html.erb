@@ -63,6 +63,12 @@
         <% end %>
       <% end %>
 
+      <% if user_signed_in? %>
+          <li class="nav-item set-color">
+            <%= link_to "Display Voters Path", display_voters_path(current_user.id) %>
+          </li>
+      <% end %>
+
         </ul>
       </div>
   </nav>

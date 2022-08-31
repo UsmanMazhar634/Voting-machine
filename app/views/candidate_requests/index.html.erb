@@ -1,4 +1,34 @@
-<% @requests.each do |request| %>
-  <%= request.voter_id %><br/>
-  <%= request.party %><br/>
+<% if false %>
+  <% @requests.each do |request| %>
+    <%= request.voter_id %><br/>
+    <%= request.party %><br/>
+  <% end %>
 <% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Request Id</th>
+      <th scope="col">Voter Id</th>
+      <th scope="col">Party</th>
+      <th scope="col">Request Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <% if request.pending?%>
+        <tr>
+          <th scope="row"><%= request.id %></th>
+          <td><%= request.voter_id %></td>
+          <td><%= request.party %></td>
+
+          <td>
+              <%= button_to "Approve", approve_request_path(request.id), params: { party: request.party, voter_id:request.voter_id}   %>
+          </td>
+        <tr>
+      <% end %>
+    <% end %>
+  </tbody>
+
+</table>
