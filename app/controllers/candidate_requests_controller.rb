@@ -11,11 +11,12 @@ class CandidateRequestsController < ApplicationController
 
   def new
     @request = CandidateRequest.new
+    @user = User.find(current_user.id)
     render :new
   end
 
   def create
-    @request = CandidateRequest.new(params.require(:candidate_request).permit(:party, :voter_id))
+    @request = CandidateRequest.new(params.require(:candidate_request).permit(:party, :voter_id, :constituency))
     if @request.save
       flash[:success] = "New request successfully added!"
       redirect_to candidate_requests_url
@@ -30,7 +31,7 @@ class CandidateRequestsController < ApplicationController
     @request.update_attribute(:status, "approved")
     @request.save!
 
-    new_candidate = Candidate.create(user_id: params[:voter_id], party: params[:party])
+    new_candidate = Candidate.create(user_id: params[:voter_id], party: params[:party], constituency:params[:constituency])
     new_candidate.save!
   end
 

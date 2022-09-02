@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_31_151117) do
+ActiveRecord::Schema.define(version: 2022_09_01_164952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_08_31_151117) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
+    t.string "constituency"
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -62,7 +63,17 @@ ActiveRecord::Schema.define(version: 2022_08_31_151117) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "constituency"
     t.index ["user_id"], name: "index_candidates_on_user_id"
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_polls_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,6 +104,21 @@ ActiveRecord::Schema.define(version: 2022_08_31_151117) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "candidate_id"
+    t.bigint "poll_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_votes_on_candidate_id"
+    t.index ["poll_id"], name: "index_votes_on_poll_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "candidates", "users"
+  add_foreign_key "polls", "users"
+  add_foreign_key "votes", "candidates"
+  add_foreign_key "votes", "polls"
+  add_foreign_key "votes", "users"
 end

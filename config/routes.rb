@@ -2,7 +2,6 @@
 
 Rails.application.routes.draw do
   devise_for :users, controllers: { invitations: 'users/invitations' }
-  devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#welcome_page'
   get 'welcome_page', to: 'welcome#welcome_page'
@@ -18,7 +17,7 @@ Rails.application.routes.draw do
   post 'approve_request/:id', to: 'candidate_requests#approve', as: 'approve_request'
   get 'users/:id/display_voters', to: 'users#display_voters', as: 'display_voters'
 
-  # resources :polls do
-  #   resources :votes
-  # end
+  resources :polls do
+    resources :votes
+  end
 end

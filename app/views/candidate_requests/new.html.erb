@@ -12,6 +12,11 @@
   <div class=“field”>
       <%= f.hidden_field :voter_id, value: current_user.id %>
   </div>
+
+  <div class=“field”>
+      <%= f.hidden_field :constituency, value: @user.constituency %>
+  </div>
+
   <%= f.submit %>
 
 <% end %>

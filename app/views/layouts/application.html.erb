@@ -65,7 +65,21 @@
 
       <% if user_signed_in? %>
           <li class="nav-item set-color">
-            <%= link_to "Display Voters Path", display_voters_path(current_user.id) %>
+            <%= link_to "Display Voters", display_voters_path(current_user.id) %>
+          </li>
+      <% end %>
+
+       <% if user_signed_in? %>
+         <% if current_user.admin? %>
+          <li class="nav-item set-color">
+            <%= link_to "Create Polls", new_poll_path %>
+          </li>
+        <% end %>
+      <% end %>
+
+       <% if user_signed_in? %>
+          <li class="nav-item set-color">
+            <%= link_to "View Polls", polls_path %>
           </li>
       <% end %>
 

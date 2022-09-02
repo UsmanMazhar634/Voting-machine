@@ -11,6 +11,7 @@
       <th scope="col">Request Id</th>
       <th scope="col">Voter Id</th>
       <th scope="col">Party</th>
+      <th scope="col">Constituency</th>
       <th scope="col">Request Status</th>
     </tr>
   </thead>
@@ -22,9 +23,10 @@
           <th scope="row"><%= request.id %></th>
           <td><%= request.voter_id %></td>
           <td><%= request.party %></td>
+           <td><%= request.constituency %></td>
 
           <td>
-              <%= button_to "Approve", approve_request_path(request.id), params: { party: request.party, voter_id:request.voter_id}   %>
+              <%= button_to "Approve", approve_request_path(request.id), params: { party: request.party, voter_id:request.voter_id, constituency:request.constituency}   %>
           </td>
         <tr>
       <% end %>
