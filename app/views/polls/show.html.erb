@@ -12,7 +12,7 @@
 
 <% vote = current_user.votes.find_by(poll: @poll) %>
 <% if vote.nil? %>
-  <%= form_with( model: [ @poll, @poll.votes.build ], local:true) do |form|  %>
+  <%= form_with( model: [ @poll, @poll.votes.build ], remote:true) do |form|  %>
     <% @candidates.each do |candidate| %>
       <%= form.radio_button :candidate_id, candidate.id%>
       <%= label :candidate_id, candidate.id %><br>

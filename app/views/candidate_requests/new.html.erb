@@ -4,10 +4,15 @@
 <%= form_with model: @request, url: candidate_requests_path, local: true do |f| %>
 
   <div class="field">
-    <%= f.label :party %><br />
-    <%= f.text_field :party, autofocus: true, autocomplete: "email" %>
+    <%= f.label :Party %><br />
+    <%= f.text_field :party, autofocus: true, autocomplete: "email", class:"form-control" %>
   </div>
-  </br>
+  <br>
+
+  <div class="field">
+    <%= f.label :Symbol %><br />
+    <%= f.file_field :image, class:"form-control" %>
+  </div>
 
   <div class=“field”>
       <%= f.hidden_field :voter_id, value: current_user.id %>

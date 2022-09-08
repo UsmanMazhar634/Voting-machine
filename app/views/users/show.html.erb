@@ -3,7 +3,7 @@
   <i>Profile Picture</i> </br>
 </h1>
 
-</br>
+<br>
 
-<%= image_tag(@user.image, style:'width:100%') %>
+<%= image_tag(@user.image_url, style:'width:100%') if @user.image %>
 </section>

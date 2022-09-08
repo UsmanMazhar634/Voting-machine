@@ -18,7 +18,7 @@ class CandidateRequestsController < ApplicationController
   end
 
   def create
-    @request = CandidateRequest.new(params.require(:candidate_request).permit(:party, :voter_id, :constituency))
+    @request = CandidateRequest.new(params.require(:candidate_request).permit(:party, :voter_id, :constituency, :image))
     if @request.save
       flash[:success] = 'New request successfully added!'
       redirect_to candidate_requests_url

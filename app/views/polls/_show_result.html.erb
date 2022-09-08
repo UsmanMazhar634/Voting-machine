@@ -3,6 +3,7 @@
   <td> <%= cons.id %> </td>
   <td> <%= id = res.keys[0] %> </td>
   <td> <%= win_user.first_name %> </td>
+  <td> <%= image_tag(candidate_request.image_url, style:'text-center', :size => "100x50") if candidate_request.image %> </td>
   <td> <%= res.values[0]%> </td>
 </tr>
 
