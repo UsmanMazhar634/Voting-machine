@@ -1,0 +1,28 @@
+<p class="lead text-center">
+   Constituency Results
+</p>
+
+<%= render partial: 'polls/search_form' %>
+
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Constituency ID</th>
+      <th scope="col">Winning Candidate ID</th>
+      <th scope="col">Winner Name</th>
+      <th scope="col">Vote Count</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @cons.each do |cons| %>
+      <%= find_result(cons) %>
+      <% end %>
+  </tbody>
+</table>
+
+
+<%= paginate @cons, :class => 'pagination'%>
+
+
+

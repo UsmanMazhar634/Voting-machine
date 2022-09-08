@@ -19,6 +19,8 @@
       <%= label :party, candidate.party %><br>
     <% end %>
     <%= form.hidden_field 'poll_id', value: @poll.id %>
+    <%= form.hidden_field 'constituency_id', value: @user.constituency %>
+
     <%= form.submit value="Cast Vote"%>
   <% end %>
 <% else %>

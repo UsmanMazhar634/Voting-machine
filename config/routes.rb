@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { invitations: 'users/invitations' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'welcome#welcome_page'
+  root 'welcome#dashboard_page'
   get 'welcome_page', to: 'welcome#welcome_page'
   get 'dashboard_page', to: 'welcome#dashboard_page'
   resources :users
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'users/:id/display_voters', to: 'users#display_voters', as: 'display_voters'
 
   resources :polls do
+    get :fetch_result, on: :member
     resources :votes
   end
 end

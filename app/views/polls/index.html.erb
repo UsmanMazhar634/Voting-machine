@@ -27,6 +27,9 @@
           <td><%= "Poll Closed" %></td>
         <% end %>
 
+        <% if Time.now > poll.end_date %>
+          <td><%= link_to "Show Results", fetch_result_poll_path(poll.id) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

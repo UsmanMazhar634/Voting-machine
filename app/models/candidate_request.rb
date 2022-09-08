@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CandidateRequest < ApplicationRecord
-  enum status: [:pending, :approved]
+  enum status: %i[pending approved]
 end

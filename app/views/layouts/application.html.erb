@@ -24,7 +24,7 @@
 
   <body>
 
-  <nav class="navbar navbar-expand-md set-navbar navbar-light">
+  <nav class="navbar navbar-expand-md set-navbar navbar-light mb-3">
       <h4 class="navbar-brand" href="#">VOTING SYSTEM</h4>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
         <span class="navbar-toggler-icon"></span>
@@ -86,9 +86,10 @@
         </ul>
       </div>
   </nav>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="set-bg container">
+      <p class="notice notice-background"><%= notice %></p>
+      <p class="alert alert-background"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>

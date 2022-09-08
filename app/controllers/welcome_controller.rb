@@ -7,6 +7,6 @@ class WelcomeController < ApplicationController
   end
 
   def dashboard_page
-    # Do noting here
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end

@@ -41,4 +41,43 @@
   vertical-align: middle;
 }
 
+.notice-background{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  color: blue;
+  font-family: 'Poppins';
+  font-size: medium;
+  vertical-align: middle;
+  padding: 10;
+}
 
+.alert-background{
+  font-size: medium;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  color: blue;
+  font-family: 'Poppins';
+  font-size: medium;
+  vertical-align:middle;
+}
+
+#error_explanation{
+  margin-left: 15%;
+}
+
+.field_with_errors{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.set-bg{
+  background-color: white;
+}
