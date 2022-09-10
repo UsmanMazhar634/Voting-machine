@@ -47,6 +47,10 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -70,5 +74,6 @@ gem 'devise_invitable', '~> 2.0.0'
 gem 'image_processing', '~> 1.2'
 gem 'jquery-rails'
 gem 'kaminari'
+gem 'pundit', '~> 2.2'
 gem 'shrine', '~> 3.3'
 gem 'shrine-cloudinary', '~> 1.1'

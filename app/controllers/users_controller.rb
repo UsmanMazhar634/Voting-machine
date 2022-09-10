@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
+# Controller for user
 class UsersController < ApplicationController
-  def show
-    @user = User.find(params[:id])
+  # Display all Users
+  def index
+    authorize User
+    @users = User.all
   end
 
-  def display_voters
-    @candidate = User.find(params[:id])
-    @users = User.all
+  # Show profile of a User.
+  def show
+    authorize User
   end
 end

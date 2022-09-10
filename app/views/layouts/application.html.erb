@@ -63,12 +63,6 @@
         <% end %>
       <% end %>
 
-      <% if user_signed_in? %>
-          <li class="nav-item set-color">
-            <%= link_to "Display Voters", display_voters_path(current_user.id) %>
-          </li>
-      <% end %>
-
        <% if user_signed_in? %>
          <% if current_user.admin? %>
           <li class="nav-item set-color">
@@ -87,9 +81,17 @@
       </div>
   </nav>
     <div class="set-bg container">
-      <p class="notice notice-background"><%= notice %></p>
-      <p class="alert alert-background"><%= alert %></p>
-      <%= yield %>
+      <div id="flash">
+      <% if notice.present? %>
+        <%= render partial: "shared/notice_banner" %>
+      <% elsif alert.present? %>
+        <%= render partial: "shared/alert_banner" %>
+      <% end %>
+
+      </div class="layer">
+        <%= yield %>
+      </div>
     </div>
+
   </body>
 </html>

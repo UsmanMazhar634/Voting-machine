@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_many :votes, dependent: :destroy
   has_many :polls, dependent: :destroy
-  enum role: %i[voter admin]
+  enum role: { voter: 0, admin: 1, candidate: 2 }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

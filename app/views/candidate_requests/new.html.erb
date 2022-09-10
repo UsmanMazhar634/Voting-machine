@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :Party %><br />
-    <%= f.text_field :party, autofocus: true, autocomplete: "email", class:"form-control" %>
+    <%= f.text_field :party, autofocus: true, class:"form-control" %>
   </div>
   <br>
 
@@ -19,7 +19,7 @@
   </div>
 
   <div class=“field”>
-      <%= f.hidden_field :constituency, value: @user.constituency %>
+      <%= f.hidden_field :constituency, value: current_user.constituency %>
   </div>
 
   <%= f.submit %>

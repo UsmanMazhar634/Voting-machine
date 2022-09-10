@@ -2,5 +2,5 @@
 
 class CandidateRequest < ApplicationRecord
   include ImageUploader::Attachment(:image)
-  enum status: %i[pending approved]
+  enum status: { pending: 0, approved: 1 }
 end
