@@ -1,0 +1,18 @@
+<% polls.each do |poll| %>
+  <tr>
+    <td><%= poll.id %></td>
+    <td><%= poll.start_date %></td>
+    <td><%= poll.end_date %></td>
+
+
+    <% if Time.now < poll.end_date %>
+      <td><%= link_to "Cast Vote In Poll", poll_path(poll.id) %></td>
+    <% else %>
+      <td><%= "Poll Closed" %></td>
+    <% end %>
+
+    <% if Time.now > poll.end_date %>
+      <td><%= link_to "Show Results", fetch_result_poll_path(poll.id) %></td>
+    <% end %>
+  </tr>
+<% end %>

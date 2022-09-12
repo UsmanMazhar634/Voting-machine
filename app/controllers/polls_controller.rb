@@ -2,37 +2,36 @@
 
 # Manage Polls
 class PollsController < ApplicationController
-  # GET /polls
   def index
+    authorize Poll
     @polls = Poll.all
   end
 
-  # POST /polls
   def create
+    authorize Poll
     @poll = current_user.polls.create(poll_params)
   end
 
   def new
+    authorize Poll
     @poll = Poll.new
   end
 
+  # Handled cast vote functionality
   def show
+    authorize Poll
     @poll = Poll.find(params[:id])
-    # only send the candidates of current constituency of user
-    @user = User.find(current_user.id)
-    @candidates = Candidate.where(constituency: @user.constituency)
+    @candidates = Candidate.where(constituency: current_user.constituency)
   end
 
   def fetch_result
+    authorize Poll
     @poll = Poll.find(params[:id])
-    @votes = Vote.where(poll_id: @poll.id)
+    @votes = @poll.votes
 
-    if params[:term].nil?
-      @cons = Constituency.all.page(params[:page]).per(1)
-    else
-      @cons = Constituency.find(params[:term].to_i)
-      render 'search_result', locals: { cons: @cons, poll: @poll, vote: @votes }
-    end
+    results = ConstituencyResults.new(params)
+    @cons = results.constituency_results
+    render 'search_result', locals: { cons: @cons, poll: @poll, vote: @votes } unless params[:term].nil?
   end
 
   private

@@ -9,7 +9,9 @@ module PollsHelper
       winner = Candidate.find_by(id: res.keys[0])
       win_user = User.find_by(id: winner.user_id)
       candidate_request = CandidateRequest.find_by(voter_id: win_user.id)
-      render partial: 'polls/show_result', locals: { cons: cons, res: res, winner: winner, win_user: win_user, candidate_request: candidate_request }
+      render partial: 'polls/show_result',
+             locals: { cons: cons, res: res, winner: winner, win_user: win_user,
+                       candidate_request: candidate_request }
     end
   end
 end

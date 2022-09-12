@@ -3,9 +3,11 @@
 
 <%= form_with model: @request, url: candidate_requests_path, local: true do |f| %>
 
+  <%= render partial: "shared/validation_errors", locals: {obj: @request} %>
+
   <div class="field">
     <%= f.label :Party %><br />
-    <%= f.text_field :party, autofocus: true, autocomplete: "email", class:"form-control" %>
+    <%= f.text_field :party, autofocus: true, class:"form-control" %>
   </div>
   <br>
 
@@ -19,7 +21,7 @@
   </div>
 
   <div class=“field”>
-      <%= f.hidden_field :constituency, value: @user.constituency %>
+      <%= f.hidden_field :constituency, value: current_user.constituency %>
   </div>
 
   <%= f.submit %>

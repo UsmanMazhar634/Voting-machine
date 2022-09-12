@@ -1,0 +1,15 @@
+<% requests.each do |request|%>
+  <% if request.pending? %>
+    <tr>
+      <th scope="row"><%= request.id %></th>
+      <td><%= request.voter_id %></td>
+      <td><%= request.party %></td>
+        <td><%= request.constituency %></td>
+
+      <td>
+          <%= button_to "Approve", candidate_request_path(request.id),method:'patch', params: { party: request.party, voter_id:request.voter_id, constituency:request.constituency}   %>
+      </td>
+    <tr>
+  <% end%>
+<% end %>
+
