@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *= require_tree .
  *= require_self
+ *= require toastr
  */
 
  .navbar-nav li{
@@ -41,3 +42,51 @@
   vertical-align: middle;
 }
 
+.notice-background{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  color: blue;
+  font-family: 'Poppins';
+  font-size: medium;
+  vertical-align: middle;
+  padding: 10;
+}
+
+.alert-background{
+  font-size: medium;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  color: blue;
+  font-family: 'Poppins';
+  font-size: medium;
+  vertical-align:middle;
+}
+
+#error_explanation{
+  margin-left: 1%;
+}
+
+.field_with_errors{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.set-bg{
+  background-color: white;
+}
+
+#flash{
+  padding-bottom: 20px;
+}
+
+#flash{
+  padding-bottom: 20px;
+}

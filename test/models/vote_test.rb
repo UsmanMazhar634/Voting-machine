@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
-class AdminTest < ActiveSupport::TestCase
+class VoteTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

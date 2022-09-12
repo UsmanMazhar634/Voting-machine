@@ -1,10 +1,17 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
+  root 'welcome#index'
+
   devise_for :users, controllers: { invitations: 'users/invitations' }
-  devise_for :admins
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'welcome#welcome_page'
-  get 'welcome_page', to:'welcome#welcome_page'
-  get 'dashboard_page', to:'welcome#dashboard_page'
+  resources :users, only: %i[index show]
+
+  resources :welcome, only: %i[index]
+
+  resources :candidate_requests, except: %i[edit destroy]
+
+  resources :polls, except: %i[edit update destroy] do
+    get :fetch_result, on: :member
+    resources :votes, only: %i[index new create]
+  end
 end
-
-

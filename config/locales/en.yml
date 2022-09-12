@@ -30,4 +30,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  candidate_request:
+    update:
+      req_approved: "Your Request is approved successfully"
+      req_denied: "Your Request is Denied"
+
+    create:
+      req_approved: "Your Request is created successfully"
+      req_denied: "Your Request is not created"
+
+  application:
+      not_authorized: "You are not Authorized to Perform this Action  "
+      record_dont_exist: "Record Dont Exist  "

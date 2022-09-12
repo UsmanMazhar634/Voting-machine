@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :constituency %><br />
-    <%= f.text_field :constituency, class:"form-control" %>
+    <%= f.collection_select :constituency, Constituency.all, :id, :name %>
   </div>
 
   <div class="actions">

@@ -10,21 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_25_130803) do
+ActiveRecord::Schema.define(version: 2022_09_12_084808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "candidate_requests", force: :cascade do |t|
+    t.integer "voter_id"
+    t.string "party"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.integer "status", default: 0
+    t.string "constituency"
+    t.text "image_data"
+  end
+
+  create_table "candidates", force: :cascade do |t|
+    t.string "symbol"
+    t.string "party"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "constituency"
+    t.index ["user_id"], name: "index_candidates_on_user_id"
+  end
+
+  create_table "constituencies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_polls_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,7 +78,7 @@ ActiveRecord::Schema.define(version: 2022_08_25_130803) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "role", default: 0
-    t.integer "cnic"
+    t.string "cnic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "constituency"
@@ -48,6 +92,7 @@ ActiveRecord::Schema.define(version: 2022_08_25_130803) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.text "image_data"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
@@ -55,4 +100,24 @@ ActiveRecord::Schema.define(version: 2022_08_25_130803) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "candidate_id"
+    t.bigint "poll_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "constituency_id"
+    t.index ["candidate_id"], name: "index_votes_on_candidate_id"
+    t.index ["constituency_id"], name: "index_votes_on_constituency_id"
+    t.index ["poll_id"], name: "index_votes_on_poll_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "candidates", "users"
+  add_foreign_key "polls", "users"
+  add_foreign_key "votes", "candidates"
+  add_foreign_key "votes", "constituencies"
+  add_foreign_key "votes", "polls"
+  add_foreign_key "votes", "users"
 end
