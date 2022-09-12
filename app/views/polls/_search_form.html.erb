@@ -1,0 +1,4 @@
+<%= form_tag fetch_result_poll_path, method: 'get', class: "form-inline my-2 my-lg-0 ml-md-auto", id: "user-search" do %>
+   <%= text_field_tag :term , params[:term], class: "form-control mr-sm-2 text-center common-btn", placeholder:"Search", autocomplete:"off" %>
+   <div id="user-results"></div>
+<% end %>

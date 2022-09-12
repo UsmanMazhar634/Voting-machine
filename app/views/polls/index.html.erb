@@ -1,0 +1,22 @@
+
+<p class="lead text-center">
+   Poll's List
+</p>
+<br>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Poll ID</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Poll Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: 'polls/poll_list', locals: {polls: @polls} %>
+  </tbody>
+</table>
+<br>

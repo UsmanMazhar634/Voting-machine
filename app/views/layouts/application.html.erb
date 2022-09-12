@@ -24,17 +24,13 @@
 
   <body>
 
-  <nav class="navbar navbar-expand-md set-navbar navbar-light">
+  <nav class="navbar navbar-expand-md set-navbar navbar-light mb-3">
       <h4 class="navbar-brand" href="#">VOTING SYSTEM</h4>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item set-color">
-            <%= link_to "Sign Up", new_user_registration_path%>
-          </li>
-
           <li class="nav-item set-color">
             <%= link_to "log out ", destroy_user_session_path, method: :delete %>
           </li>
@@ -65,16 +61,39 @@
 
       <% if user_signed_in? %>
           <li class="nav-item set-color">
-            <%= link_to "Display Voters Path", display_voters_path(current_user.id) %>
+            <%= link_to "Display Voters", users_path(current_user.id) %>
+          </li>
+      <% end %>
+
+       <% if user_signed_in? %>
+         <% if current_user.admin? %>
+          <li class="nav-item set-color">
+            <%= link_to "Create Polls", new_poll_path %>
+          </li>
+        <% end %>
+      <% end %>
+
+       <% if user_signed_in? %>
+          <li class="nav-item set-color">
+            <%= link_to "View Polls", polls_path %>
           </li>
       <% end %>
 
         </ul>
       </div>
   </nav>
+    <div class="set-bg container">
+      <div id="flash">
+      <% if notice.present? %>
+        <%= render partial: "shared/notice_banner" %>
+      <% elsif alert.present? %>
+        <%= render partial: "shared/alert_banner" %>
+      <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+      </div class="layer">
+        <%= yield %>
+      </div>
+    </div>
+
   </body>
 </html>

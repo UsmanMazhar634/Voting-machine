@@ -1,0 +1,44 @@
+.reg-page{
+  background-attachment: scroll;
+  background-clip: border-box;
+  background: black;
+  // background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
+  display: block;
+  font-family: 'Poppins', 'Arial';
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  border-radius: 10px;
+}
+
+// .wrapper{
+//   background-color: gray;
+//   border-radius: 10px;
+// }
+
+.title{
+  font-size: 24px;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 36px;
+  font-family: 'Poppins', 'Arial';
+
+}
+
+.input-style{
+  padding: 5px 0;
+  font-size: 18px;
+  color: white;
+  background: transparent;
+  font-family: 'Poppins', 'Arial';
+}
+
+#btn{
+  background: green;
+  border-radius: 20px;
+}
+
+
+
