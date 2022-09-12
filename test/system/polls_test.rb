@@ -1,45 +1,47 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class PollsTest < ApplicationSystemTestCase
   setup do
     @poll = polls(:one)
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit polls_url
-    assert_selector "h1", text: "Polls"
+    assert_selector 'h1', text: 'Polls'
   end
 
-  test "creating a Poll" do
+  test 'creating a Poll' do
     visit polls_url
-    click_on "New Poll"
+    click_on 'New Poll'
 
-    fill_in "End date", with: @poll.end_date
-    fill_in "Start date", with: @poll.start_date
-    click_on "Create Poll"
+    fill_in 'End date', with: @poll.end_date
+    fill_in 'Start date', with: @poll.start_date
+    click_on 'Create Poll'
 
-    assert_text "Poll was successfully created"
-    click_on "Back"
+    assert_text 'Poll was successfully created'
+    click_on 'Back'
   end
 
-  test "updating a Poll" do
+  test 'updating a Poll' do
     visit polls_url
-    click_on "Edit", match: :first
+    click_on 'Edit', match: :first
 
-    fill_in "End date", with: @poll.end_date
-    fill_in "Start date", with: @poll.start_date
-    click_on "Update Poll"
+    fill_in 'End date', with: @poll.end_date
+    fill_in 'Start date', with: @poll.start_date
+    click_on 'Update Poll'
 
-    assert_text "Poll was successfully updated"
-    click_on "Back"
+    assert_text 'Poll was successfully updated'
+    click_on 'Back'
   end
 
-  test "destroying a Poll" do
+  test 'destroying a Poll' do
     visit polls_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on 'Destroy', match: :first
     end
 
-    assert_text "Poll was successfully destroyed"
+    assert_text 'Poll was successfully destroyed'
   end
 end
