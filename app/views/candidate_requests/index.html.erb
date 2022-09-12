@@ -1,4 +1,21 @@
-<% @requests.each do |request| %>
-  <%= request.voter_id %><br/>
-  <%= request.party %><br/>
-<% end %>
+<p class="lead">
+   Candidate Requests
+</p>
+<br>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Request Id</th>
+      <th scope="col">Voter Id</th>
+      <th scope="col">Party</th>
+      <th scope="col">Constituency</th>
+      <th scope="col">Request Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <%= requests(@requests) %>
+  </tbody>
+
+</table>

@@ -1,0 +1,18 @@
+<% vote = current_user.votes.find_by(poll: @poll) %>
+<% if vote.nil? %>
+  <%= form_with( model: [ @poll, @poll.votes.build ], remote:true) do |form|  %>
+    <% @candidates.each do |candidate| %>
+      <%= form.radio_button :candidate_id, candidate.id%>
+      <%= label :candidate_id, candidate.id %><br>
+      <%= label :party, candidate.party %><br>
+    <% end %>
+    <%= form.hidden_field 'poll_id', value: @poll.id %>
+    <%= form.hidden_field 'constituency_id', value: current_user.constituency %>
+
+    <%= form.submit value="Cast Vote"%>
+  <% end %>
+<% else %>
+  <div class="alert alert-primary" role="alert">
+    <h4 class="lead"><b>You have already casted your vote.</b><h3>
+  </div>
+<% end %>
