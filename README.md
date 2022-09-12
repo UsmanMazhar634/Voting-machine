@@ -3,22 +3,19 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+
 Things you may want to cover:
 
-* Ruby version:
+* Ruby version: My project is compatible with 2.7.3
 
-* System dependencies
+* System dependencies: All the dependencies are placed in gemfile. Just run bindle install.
 
-* Configuration
+* Configuration: Just clone my project. And run bundle install.
 
 * Database creation: postgresql
 
-* Database initialization
+* Database initialization: Seeded admin as instruted. You have to create other users.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* Deployment instructions: Deployed on Heroku
 
 * ...
