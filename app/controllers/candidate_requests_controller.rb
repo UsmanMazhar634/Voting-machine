@@ -16,25 +16,24 @@ class CandidateRequestsController < ApplicationController
     authorize CandidateRequest
     @request = CandidateRequest.new(params.require(:candidate_request).permit(:party, :voter_id, :constituency, :image))
     if @request.save
-      flash[:notice] = 'New request successfully added!'
+      flash[:notice] = t('candidate_request.create.req_approved')
     else
-      flash.now[:error] = 'Request failed'
+      flash.now[:error] = t('candidate_request.create.req_denied')
     end
     render :new
   end
 
-  def approve
-    authorize CandidateRequest
+  def update
     @request = CandidateRequest.find(params[:id])
-    @request.update_attribute(:status, 'approved')
+    authorize @request
+    @request.approved!
     @request.save!
 
-    @user = User.find(params[:voter_id])
-    @user.update_attribute(:role, 'candidate')
-    @user.save!
-
-    new_candidate = Candidate.create(user_id: params[:voter_id], party: params[:party],
-                                     constituency: params[:constituency])
-    new_candidate.save!
+    if @request.save
+      flash[:notice] = t('candidate_request.update.req_approved')
+    else
+      flash.now[:error] = t('candidate_request.update.req_denied')
+    end
+    redirect_to :candidate_requests
   end
 end

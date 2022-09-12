@@ -14,9 +14,10 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/bundle/**/*'
     - 'bin/**/*'
+    - 'app/helpers/*'
 
 Layout/LineLength:
-  Max: 120
+  Max: 200
 
 Metrics/MethodLength:
   Max: 23

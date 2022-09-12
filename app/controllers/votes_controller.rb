@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 # Manage Votes Controller
-class VotesController < pplicationController
-  before_action :set_vote, only: %i[show edit update destroy]
+class VotesController < ApplicationController
+  before_action :set_vote
 
   def index
     authorize Vote
