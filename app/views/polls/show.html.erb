@@ -1,0 +1,14 @@
+
+<p class="lead">
+  <strong>Start date:</strong>
+  <%= @poll.start_date %>
+   <strong>&emsp; &emsp; End date:</strong>
+  <%= @poll.end_date %>
+</p>
+
+<p class= "lead">
+  <strong>Poll Status:</strong>
+  <button type="button" class="btn btn-info">Active</button>
+</p>
+
+<%= render partial: 'polls/cast_vote', locals: {poll: @poll, candidates: @candidates} %>
