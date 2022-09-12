@@ -3,6 +3,8 @@
 
 <%= form_with model: @request, url: candidate_requests_path, local: true do |f| %>
 
+  <%= render partial: "shared/validation_errors", locals: {obj: @request} %>
+
   <div class="field">
     <%= f.label :Party %><br />
     <%= f.text_field :party, autofocus: true, class:"form-control" %>

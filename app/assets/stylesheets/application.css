@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *= require_tree .
  *= require_self
+ *= require toastr
  */
 
  .navbar-nav li{
@@ -68,7 +69,7 @@
 }
 
 #error_explanation{
-  margin-left: 15%;
+  margin-left: 1%;
 }
 
 .field_with_errors{

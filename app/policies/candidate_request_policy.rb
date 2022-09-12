@@ -24,4 +24,8 @@ class CandidateRequestPolicy < ApplicationPolicy
   def approve?
     @user.admin?
   end
+
+  def update?
+    @user.admin?
+  end
 end
