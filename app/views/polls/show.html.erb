@@ -1,28 +1,14 @@
-<p id="notice"><%= notice %></p>
 
-<p>
+<p class="lead">
   <strong>Start date:</strong>
   <%= @poll.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
+   <strong>&emsp; &emsp; End date:</strong>
   <%= @poll.end_date %>
 </p>
 
-<% vote = current_user.votes.find_by(poll: @poll) %>
-<% if vote.nil? %>
-  <%= form_with( model: [ @poll, @poll.votes.build ], local:true) do |form|  %>
-    <% @candidates.each do |candidate| %>
-      <%= form.radio_button :candidate_id, candidate.id%>
-      <%= label :candidate_id, candidate.id %><br>
-      <%= label :party, candidate.party %><br>
-    <% end %>
-    <%= form.hidden_field 'poll_id', value: @poll.id %>
-    <%= form.hidden_field 'constituency_id', value: @user.constituency %>
+<p class= "lead">
+  <strong>Poll Status:</strong>
+  <button type="button" class="btn btn-info">Active</button>
+</p>
 
-    <%= form.submit value="Cast Vote"%>
-  <% end %>
-<% else %>
-  You have already voted!
-<% end %>
+<%= render partial: 'polls/cast_vote', locals: {poll: @poll, candidates: @candidates} %>

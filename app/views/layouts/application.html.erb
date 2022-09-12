@@ -32,10 +32,6 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item set-color">
-            <%= link_to "Sign Up", new_user_registration_path%>
-          </li>
-
-          <li class="nav-item set-color">
             <%= link_to "log out ", destroy_user_session_path, method: :delete %>
           </li>
 
@@ -65,7 +61,7 @@
 
       <% if user_signed_in? %>
           <li class="nav-item set-color">
-            <%= link_to "Display Voters", display_voters_path(current_user.id) %>
+            <%= link_to "Display Voters", users_path(current_user.id) %>
           </li>
       <% end %>
 
@@ -87,9 +83,17 @@
       </div>
   </nav>
     <div class="set-bg container">
-      <p class="notice notice-background"><%= notice %></p>
-      <p class="alert alert-background"><%= alert %></p>
-      <%= yield %>
+      <div id="flash">
+      <% if notice.present? %>
+        <%= render partial: "shared/notice_banner" %>
+      <% elsif alert.present? %>
+        <%= render partial: "shared/alert_banner" %>
+      <% end %>
+
+      </div class="layer">
+        <%= yield %>
+      </div>
     </div>
+
   </body>
 </html>
