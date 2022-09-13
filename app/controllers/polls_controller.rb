@@ -10,6 +10,7 @@ class PollsController < ApplicationController
   def create
     authorize Poll
     @poll = current_user.polls.create(poll_params)
+    redirect_to :root
   end
 
   def new

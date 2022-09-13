@@ -3,13 +3,11 @@
 class CandidateRequest < ApplicationRecord
   include ImageUploader::Attachment(:image)
 
-  after_update :change_candidate_status
-
   enum status: { pending: 0, approved: 1 }
 
-  validates :voter_id, :constituency, :party, presence: true
-
-  private
+  validates :voter_id, :status, presence: true
+  validates :party, length: { maximum: 20 }
+  validates :constituency, length: { maximum: 4 }
 
   def change_candidate_status
     @user = User.find(voter_id)

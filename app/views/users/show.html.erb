@@ -5,5 +5,5 @@
 
 <br>
 
-<%= image_tag(current_user.image_url, style:'width:100%') if current_user.image %>
+<%= image_tag(current_user.image_url, size: 300,  class: "rounded-circle") if current_user.image %>
 </section>
