@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_12_084808) do
+ActiveRecord::Schema.define(version: 2022_09_13_072522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,34 +37,33 @@ ActiveRecord::Schema.define(version: 2022_09_12_084808) do
   end
 
   create_table "candidate_requests", force: :cascade do |t|
-    t.integer "voter_id"
-    t.string "party"
+    t.integer "voter_id", null: false
+    t.string "party", limit: 20, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", default: 0
-    t.string "constituency"
+    t.integer "status", default: 0, null: false
+    t.string "constituency", limit: 4, null: false
     t.text "image_data"
   end
 
   create_table "candidates", force: :cascade do |t|
-    t.string "symbol"
-    t.string "party"
+    t.string "party", limit: 20, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "constituency"
+    t.bigint "constituency", null: false
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
   create_table "constituencies", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.string "name", limit: 4, null: false
   end
 
   create_table "polls", force: :cascade do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,13 +76,13 @@ ActiveRecord::Schema.define(version: 2022_09_12_084808) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "role", default: 0
-    t.string "cnic"
+    t.integer "role", default: 0, null: false
+    t.string "cnic", limit: 13, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "constituency"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "constituency", limit: 4, null: false
+    t.string "first_name", limit: 15, null: false
+    t.string "last_name", limit: 15, null: false
     t.string "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -109,6 +108,7 @@ ActiveRecord::Schema.define(version: 2022_09_12_084808) do
     t.bigint "constituency_id"
     t.index ["candidate_id"], name: "index_votes_on_candidate_id"
     t.index ["constituency_id"], name: "index_votes_on_constituency_id"
+    t.index ["poll_id", "user_id"], name: "index_votes_on_poll_id_and_user_id", unique: true
     t.index ["poll_id"], name: "index_votes_on_poll_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end

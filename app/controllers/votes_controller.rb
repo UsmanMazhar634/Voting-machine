@@ -2,7 +2,7 @@
 
 # Manage Votes Controller
 class VotesController < ApplicationController
-  before_action :set_vote
+  # before_action :set_vote
 
   def index
     authorize Vote

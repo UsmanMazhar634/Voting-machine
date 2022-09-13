@@ -34,6 +34,7 @@ class CandidateRequestsController < ApplicationController
     else
       flash.now[:error] = t('candidate_request.update.req_denied')
     end
+    @request.change_candidate_status
     redirect_to :candidate_requests
   end
 end
