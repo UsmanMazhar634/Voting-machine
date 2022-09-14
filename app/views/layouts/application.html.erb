@@ -41,7 +41,7 @@
 
         <% if user_signed_in? %>
           <li class="nav-item set-color">
-            <%= link_to "Show Profile", user_path(current_user.id) %>
+            <%= link_to "Show Profile", user_path(current_user.id), class:"text-muted" %>
           </li>
         <% end %>
 
@@ -61,7 +61,7 @@
 
       <% if user_signed_in? %>
           <li class="nav-item set-color">
-            <%= link_to "Display Voters", users_path(current_user.id) %>
+            <%= link_to "Display Voters", users_path(current_user.id), class:"text-muted" %>
           </li>
       <% end %>
 

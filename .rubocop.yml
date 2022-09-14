@@ -16,6 +16,7 @@ AllCops:
     - 'vendor/bundle/**/*'
     - 'bin/**/*'
     - 'app/helpers/*'
+    - 'app/services/*'
 
 Layout/LineLength:
   Max: 200
