@@ -2,12 +2,19 @@
 
 # Controller for user
 class UsersController < ApplicationController
+  before_action :set_user_policy, only: %i[index show]
+
   def index
-    authorize User
     @users = User.all
   end
 
   def show
-    authorize User
+    # Showing Profile
+  end
+
+  private
+
+  def set_user_policy
+    authorize Poll
   end
 end
