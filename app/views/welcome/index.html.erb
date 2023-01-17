@@ -1,6 +1,7 @@
-<div class="row">
+<div class="row bg-transparent">
+<% if current_user.admin? %>
   <div class="col-md-6 col-lg-3">
-    <div class="card post-card mb-4">
+    <div class="card post-card mb-4 bg-transparent">
       <div class="card_image rounded-top" style="background-image: url(https://img.freepik.com/free-vector/follow-me-social-business-theme-design_24877-50426.jpg?w=1380&t=st=1662123477~exp=1662124077~hmac=b3b94c755f304c3d156cc68ae6dcd352fdce211d25bccf4bc2d8de89b47f5ebb)"></div>
       <div class="card-body rounded-bottom pt-3 d-flex flex-column">
         <div class="d-flex justify-content-between">
@@ -9,40 +10,83 @@
       </div>
     </div>
   </div>
+<% end %>
+
+  <% if current_user.admin? %>
+    <div class="col-md-6 col-lg-3">
+      <div class="card post-card mb-4">
+        <div class="card_image rounded-top" style="background-image: url(https://img.freepik.com/free-vector/online-question-answers-search_102902-2342.jpg?w=1800&t=st=1662124312~exp=1662124912~hmac=83b08d2fc6d642aaf4bdb8e76171b170deaed7a135380a9df06bdd082c6df683)"></div>
+        <div class="card-body rounded-bottom pt-3 d-flex flex-column">
+          <div class="d-flex justify-content-between">
+          </div>
+          <%= link_to "Candidate Requests", candidate_requests_path , class: "btn btn-success mt-auto text-white" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user.candidate? %>
+    <div class="col-md-6 col-lg-3">
+      <div class="card post-card mb-4">
+        <div class="card_image rounded-top" style="background-image: url(https://img.freepik.com/premium-photo/girl-with-megaphone-jumping-shouting_8087-2707.jpg?w=1800)"></div>
+        <div class="card-body rounded-bottom pt-3 d-flex flex-column">
+          <div class="d-flex justify-content-between">
+          </div>
+          <%= link_to "Show Voters", users_path , class: "btn btn-warning mt-auto text-white" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user.admin? %>
+    <div class="col-md-6 col-lg-3">
+      <div class="card post-card mb-4">
+        <div class="card_image rounded-top" style="background-image: url(https://img.freepik.com/free-photo/group-asia-young-creative-people-smart-casual-wear-discussing-business-brainstorming_7861-3066.jpg?w=2000&t=st=1662125599~exp=1662126199~hmac=7545d892b495d72679ac6172159935f762eb698e1fc5033b853da1ea91dd2cd5)"></div>
+        <div class="card-body rounded-bottom pt-3 d-flex flex-column">
+          <div class="d-flex justify-content-between">
+          </div>
+          <%= link_to "Create Poll", new_poll_path , class: "btn btn-primary mt-auto text-white" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user.voter? %>
+    <div class="col-md-6 col-lg-3">
+      <div class="card post-card mb-4">
+        <div class="card_image rounded-top" style="background-image: url(https://www.ismartrecruit.com/upload/blog/main_image/For_Sourcing_of_Candidates_Recruiter_Use_These_7_Ways.jpg)"></div>
+        <div class="card-body rounded-bottom pt-3 d-flex flex-column">
+          <div class="d-flex justify-content-between">
+          </div>
+          <%= link_to "Become Candidate", new_candidate_request_path , class: "btn btn-primary mt-auto text-white" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if !current_user.admin? %>
+    <div class="col-md-6 col-lg-3">
+      <div class="card post-card mb-4">
+        <div class="card_image rounded-top" style="background-image: url(https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg)"></div>
+        <div class="card-body rounded-bottom pt-3 d-flex flex-column">
+          <div class="d-flex justify-content-between">
+          </div>
+          <%= link_to "Show Profile Picture", user_path(current_user.id) , class: "btn btn-primary mt-auto text-white" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
   <div class="col-md-6 col-lg-3">
     <div class="card post-card mb-4">
-      <div class="card_image rounded-top" style="background-image: url(https://img.freepik.com/free-vector/online-question-answers-search_102902-2342.jpg?w=1800&t=st=1662124312~exp=1662124912~hmac=83b08d2fc6d642aaf4bdb8e76171b170deaed7a135380a9df06bdd082c6df683)"></div>
+      <div class="card_image rounded-top" style="background-image: url(https://i0.wp.com/asiatimes.com/wp-content/uploads/2018/06/iStock-955531076.jpg?fit=1200%2C815&ssl=1)"></div>
       <div class="card-body rounded-bottom pt-3 d-flex flex-column">
         <div class="d-flex justify-content-between">
         </div>
-        <%= link_to "Candidate Requests", candidate_requests_path , class: "btn btn-success mt-auto text-white" %>
+        <%= link_to "Polls", polls_path , class: "btn btn-dark mt-auto text-white" %>
       </div>
     </div>
   </div>
-
-  <div class="col-md-6 col-lg-3">
-    <div class="card post-card mb-4">
-      <div class="card_image rounded-top" style="background-image: url(https://img.freepik.com/premium-photo/girl-with-megaphone-jumping-shouting_8087-2707.jpg?w=1800)"></div>
-      <div class="card-body rounded-bottom pt-3 d-flex flex-column">
-        <div class="d-flex justify-content-between">
-        </div>
-        <%= link_to "Show Voters", users_path , class: "btn btn-warning mt-auto text-white" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6 col-lg-3">
-    <div class="card post-card mb-4">
-      <div class="card_image rounded-top" style="background-image: url(https://img.freepik.com/free-photo/group-asia-young-creative-people-smart-casual-wear-discussing-business-brainstorming_7861-3066.jpg?w=2000&t=st=1662125599~exp=1662126199~hmac=7545d892b495d72679ac6172159935f762eb698e1fc5033b853da1ea91dd2cd5)"></div>
-      <div class="card-body rounded-bottom pt-3 d-flex flex-column">
-        <div class="d-flex justify-content-between">
-        </div>
-        <%= link_to "Create Poll", new_poll_path , class: "btn btn-primary mt-auto text-white" %>
-      </div>
-    </div>
-  </div>
-
 
 </div>
 

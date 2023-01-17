@@ -11,10 +11,12 @@ AllCops:
   TargetRailsVersion: 5.2
   Exclude:
     - 'db/schema.rb'
+    - 'db/seeds.rb'
     - 'node_modules/**/*'
     - 'vendor/bundle/**/*'
     - 'bin/**/*'
     - 'app/helpers/*'
+    - 'app/services/*'
 
 Layout/LineLength:
   Max: 200

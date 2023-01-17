@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root to: 'welcome#index'
 
   devise_for :users, controllers: { invitations: 'users/invitations' }
   resources :users, only: %i[index show]
