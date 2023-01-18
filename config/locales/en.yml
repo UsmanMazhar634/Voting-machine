@@ -42,3 +42,6 @@ en:
   application:
       not_authorized: "You are not Authorized to Perform this Action  "
       record_dont_exist: "Record Dont Exist  "
+  smtp:
+    user_name: 'usmanjanjuaa3@gmail.com'
+    password: 'otmaxklvxlnymrdv'
