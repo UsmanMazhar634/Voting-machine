@@ -8,9 +8,7 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-    # Showing Profile
-  end
+  def show; end
 
   private
 

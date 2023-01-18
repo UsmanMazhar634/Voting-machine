@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Voting System</title>
+    <title>LETS VOTE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,10 +11,10 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
     <%# Required Bootstrap %>
@@ -24,8 +24,8 @@
 
   <body>
 
-  <nav class="navbar navbar-expand-md set-navbar navbar-light mb-3">
-      <h4 class="navbar-brand" href="#">VOTING SYSTEM</h4>
+    <nav class="navbar navbar-expand-md set-navbar navbar-light mb-3">
+      <h4 class="navbar-brand" href="#">LETS VOTE FOR PAKISTAN</h4>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,52 +36,53 @@
           </li>
 
           <li class="nav-item set-color">
-            <%= link_to "Invite Voter", new_user_invitation_path %>
+            <%= link_to "Home", root_path %>
           </li>
 
-        <% if user_signed_in? %>
-          <li class="nav-item set-color">
-            <%= link_to "Show Profile", user_path(current_user.id) %>
-          </li>
-        <% end %>
+          <% if user_signed_in? %>
+            <li class="nav-item set-color">
+              <%= link_to "Show Profile", user_path(current_user.id), class:"text-muted" %>
+            </li>
+          <% end %>
 
-        <% if user_signed_in? %>
-          <li class="nav-item set-color">
-            <%= link_to "Become Candidate", new_candidate_request_path  %>
-          </li>
-        <% end %>
+          <% if user_signed_in? %>
+            <li class="nav-item set-color">
+              <%= link_to "Become Candidate", new_candidate_request_path  %>
+            </li>
+          <% end %>
 
-       <% if user_signed_in? %>
-         <% if current_user.admin? %>
-          <li class="nav-item set-color">
-            <%= link_to "Candidate Requests", candidate_requests_path  %>
-          </li>
-        <% end %>
-      <% end %>
+          <% if user_signed_in? %>
+            <% if current_user.admin? %>
+              <li class="nav-item set-color">
+                <%= link_to "Candidate Requests", candidate_requests_path  %>
+              </li>
+            <% end %>
+          <% end %>
 
-      <% if user_signed_in? %>
-          <li class="nav-item set-color">
-            <%= link_to "Display Voters", users_path(current_user.id) %>
-          </li>
-      <% end %>
+          <% if user_signed_in? %>
+              <li class="nav-item set-color">
+                <%= link_to "Display Voters", users_path(current_user.id), class:"text-muted" %>
+              </li>
+          <% end %>
 
-       <% if user_signed_in? %>
-         <% if current_user.admin? %>
-          <li class="nav-item set-color">
-            <%= link_to "Create Polls", new_poll_path %>
-          </li>
-        <% end %>
-      <% end %>
+          <% if user_signed_in? %>
+            <% if current_user.admin? %>
+              <li class="nav-item set-color">
+                <%= link_to "Create Polls", new_poll_path %>
+              </li>
+            <% end %>
+          <% end %>
 
-       <% if user_signed_in? %>
-          <li class="nav-item set-color">
-            <%= link_to "View Polls", polls_path %>
-          </li>
-      <% end %>
+          <% if user_signed_in? %>
+              <li class="nav-item set-color">
+                <%= link_to "View Polls", polls_path %>
+              </li>
+          <% end %>
 
         </ul>
-      </div>
-  </nav>
+        </div>
+    </nav>
+
     <div class="set-bg container">
       <div id="flash">
       <% if notice.present? %>

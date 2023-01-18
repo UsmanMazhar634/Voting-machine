@@ -1,4 +1,5 @@
 <% vote = current_user.votes.find_by(poll: @poll) %>
+<% byebug %>
 <% if vote.nil? %>
   <%= form_with( model: [ @poll, @poll.votes.build ], remote:true) do |form|  %>
     <% @candidates.each do |candidate| %>

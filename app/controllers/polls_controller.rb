@@ -2,42 +2,48 @@
 
 # Manage Polls
 class PollsController < ApplicationController
+  before_action :set_poll, only: %i[show fetch_result]
+  before_action :set_poll_policy, only: %i[index create new]
+
   def index
-    authorize Poll
     @polls = Poll.all
   end
 
   def create
-    authorize Poll
-    @poll = current_user.polls.create(poll_params)
+    @poll = current_user.polls.new(poll_params)
+    if @poll.save
+      flash[:notice] = 'Poll has been created'
+      redirect_to polls_path
+    else
+      render 'new'
+    end
   end
 
   def new
-    authorize Poll
     @poll = Poll.new
   end
 
-  # Handled cast vote functionality
   def show
-    authorize Poll
-    @poll = Poll.find(params[:id])
     @candidates = Candidate.where(constituency: current_user.constituency)
   end
 
   def fetch_result
-    authorize Poll
-    @poll = Poll.find(params[:id])
     @votes = @poll.votes
-
-    results = ConstituencyResults.new(params)
-    @cons = results.constituency_results
-    render 'search_result', locals: { cons: @cons, poll: @poll, vote: @votes } unless params[:term].nil?
+    @cons = ConstituencyResults.new(params).constituency_results
   end
 
   private
 
-  # Only allow a list of trusted parameters through.
   def poll_params
     params.require(:poll).permit(:start_date, :end_date)
+  end
+
+  def set_poll
+    @poll = Poll.find(params[:id])
+    authorize @poll
+  end
+
+  def set_poll_policy
+    authorize Poll
   end
 end

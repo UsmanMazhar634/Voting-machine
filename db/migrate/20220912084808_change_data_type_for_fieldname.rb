@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class ChangeDataTypeForFieldname < ActiveRecord::Migration[5.2]
-  def change
-    change_column(:users, :cnic, :string)
+  def up
+    change_column :users, :cnic, :string
+  end
+
+  def down
+    change_column :users, :cnic, :intiger
   end
 end
