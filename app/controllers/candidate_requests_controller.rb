@@ -44,4 +44,19 @@ class CandidateRequestsController < ApplicationController
   def set_candidate_request_policy
     authorize CandidateRequest
   end
+
+  private
+
+  def candidate_request_params
+    params.require(:candidate_request).permit(:party, :voter_id, :constituency, :image)
+  end
+
+  def set_candidate_request
+    @request = CandidateRequest.find(params[:id])
+    authorize @request
+  end
+
+  def set_candidate_request_policy
+    authorize CandidateRequest
+  end
 end

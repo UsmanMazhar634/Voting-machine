@@ -13,7 +13,6 @@ class Poll < ApplicationRecord
 
   def end_date_is_after_start_date
     return unless end_date.present? && start_date.present?
-
     errors.add(:end_date, 'cannot be before the start date') if end_date < start_date
   end
 end
