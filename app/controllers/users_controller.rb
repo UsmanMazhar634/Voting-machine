@@ -8,13 +8,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-    # Showing Profile
-  end
+  def show; end
 
   private
 
   def set_user_policy
-    authorize Poll
+    authorize User
   end
 end

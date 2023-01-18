@@ -5,7 +5,8 @@ class CandidateRequest < ApplicationRecord
 
   enum status: { pending: 0, approved: 1 }
 
-  validate :check_image_size
+  # validate :check_image_size
+
   validates :voter_id, :status, presence: true
   validates :party, length: { maximum: 20 }
   validates :constituency, length: { maximum: 4 }
