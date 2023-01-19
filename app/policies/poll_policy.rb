@@ -10,7 +10,7 @@ class PollPolicy < ApplicationPolicy
   end
 
   def index?
-    user.admin? || user.candidate? || user.voter? 
+    user.admin? || user.candidate? || user.voter?
   end
 
   def create?

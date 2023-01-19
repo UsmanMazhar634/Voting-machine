@@ -45,3 +45,7 @@ en:
   smtp:
     user_name: 'usmanjanjuaa3@gmail.com'
     password: 'otmaxklvxlnymrdv'
+
+  poll:
+    create:
+      poll_created: "Poll has been created"
