@@ -19,6 +19,7 @@ class CandidateRequestsController < ApplicationController
       flash[:notice] = t('candidate_request.create.req_approved')
       redirect_to :root
     else
+      flash.now[:alert] = t('candidate_request.create.req_denied')
       render :new
     end
   end
@@ -28,21 +29,6 @@ class CandidateRequestsController < ApplicationController
     @request.change_candidate_status
     flash[:notice] = t('candidate_request.update.req_approved') if @request.save
     redirect_to :candidate_requests
-  end
-
-  private
-
-  def candidate_request_params
-    params.require(:candidate_request).permit(:party, :voter_id, :constituency, :image)
-  end
-
-  def set_candidate_request
-    @request = CandidateRequest.find(params[:id])
-    authorize @request
-  end
-
-  def set_candidate_request_policy
-    authorize CandidateRequest
   end
 
   private
